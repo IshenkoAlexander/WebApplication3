@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: WebApplication3/Dockerfile  # Points to your Dockerfile
+    ports:
+      - "8080:8080" #Or other appropriate port mapping
+    depends_on:
+      - db
+    networks:
+      - internal
+
+  db:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=country_db
+    ports:
+      - "5432:5432" #Or other port mapping
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
