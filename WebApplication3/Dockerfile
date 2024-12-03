@@ -28,12 +28,12 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "WebApplication3.dll"]
 
-# ... other Dockerfile instructions ...
+# # ... other Dockerfile instructions ...
 
-# Copy necessary migration files
-COPY ./Migrations ./Migrations
+# # Copy necessary migration files
+# COPY ./Migrations ./Migrations
 
-# Run migrations
-RUN dotnet ef database update --context ApplicationDbContext --project ../WebApplication3.sln
+# # Run migrations
+# RUN dotnet ef database update --context ApplicationDbContext --project ../WebApplication3.sln
 
-# ... rest of your Dockerfile ...
+# # ... rest of your Dockerfile ...
